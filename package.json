@@ -6,8 +6,8 @@
         "react-dom": "^18.2.0"
     },
     "scripts": {
-        "start": "webpack serve --config webpack.dev.config.ts",
-        "build": "webpack --config webpack.prod.config.ts"
+        "start": "webpack serve --config packages/web/webpack.dev.config.ts",
+        "build": "webpack --config packages/web/webpack.prod.config.ts"
     },
     "devDependencies": {
         "@babel/core": "^7.18.6",
