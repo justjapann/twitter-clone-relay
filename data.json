@@ -1,0 +1,19 @@
+{
+  "posts": [
+    {
+      "id": "e7944808-77e9-410e-a9d0-81d17b56c2e9",
+      "title": "title 123",
+      "body": "body test23"
+    },
+    {
+      "id": "1f77db45-c055-4477-9ad1-68dfc563a6b9",
+      "title": "title 1234",
+      "body": "body test234"
+    },
+    {
+      "id": "1c80f9e1-6a6e-4986-868d-81f6830d6fc9",
+      "title": "title 12345",
+      "body": "body test2345"
+    }
+  ]
+}
