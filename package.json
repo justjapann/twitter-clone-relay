@@ -12,6 +12,7 @@
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "reflect-metadata": "^0.1.13",
+    "relay-runtime": "^14.0.0",
     "type-graphql": "^1.1.1",
     "uuidv4": "^6.2.13"
   },
@@ -22,7 +23,8 @@
     ]
   },
   "scripts": {
-    "start": "webpack serve --config packages/web/webpack.dev.config.ts",
+    "relay": "relay-compiler",
+    "start": "webpack serve --config packages/web/webpack.config.ts",
     "build": "webpack --config packages/web/webpack.prod.config.ts",
     "dev:server": "tsnd --transpile-only --ignore-watch node_modules packages/server/src/server.ts"
   },

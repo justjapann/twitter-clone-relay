@@ -1,0 +1,15 @@
+{
+  "name": "my-app",
+  "version": "0.0.1",
+  "scripts": {
+    "start:dev": "webpack serve --config webpack.config.ts",
+    "build": "webpack --config webpack.prod.config.ts",
+    "relay": "relay-compiler",
+    "copy-env": "cp .env.example .env"
+  },
+  "relay": {
+    "language": "typescript",
+    "src": "./src",
+    "schema": "../server/graphql/schema.graphql"
+  }
+}

@@ -1,10 +1,5 @@
 import React from "react";
 import ReactDOM from "react-dom";
-import PostList from "./app";
+import App from "./app";
 
-ReactDOM.render(
-  <React.StrictMode>
-    <PostList />
-  </React.StrictMode>,
-  document.getElementById("root")
-);
+ReactDOM.render(<App />, document.getElementById("root"));

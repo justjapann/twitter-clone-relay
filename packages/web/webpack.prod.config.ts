@@ -7,7 +7,7 @@ import { CleanWebpackPlugin } from "clean-webpack-plugin";
 
 const config: Configuration = {
   mode: "production",
-  entry: "./packages/web/src/index.tsx",
+  entry: "./src/index.tsx",
   output: {
     path: path.resolve(__dirname, "build"),
     filename: "[name].[contenthash].js",
@@ -36,7 +36,7 @@ const config: Configuration = {
   },
   plugins: [
     new HtmlWebpackPlugin({
-      template: "packages/web/public/index.html",
+      template: "./public/index.html",
     }),
     new ForkTsCheckerWebpackPlugin({
       async: false,
