@@ -7,9 +7,7 @@
     "relay": "relay-compiler",
     "copy-env": "cp .env.example .env"
   },
-  "relay": {
-    "language": "typescript",
-    "src": "./src",
-    "schema": "../server/graphql/schema.graphql"
+  "dependencies": {
+    "relay-compiler-language-typescript": "^15.0.1"
   }
 }

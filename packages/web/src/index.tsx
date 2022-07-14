@@ -1,5 +1,5 @@
 import React from "react";
 import ReactDOM from "react-dom";
-import App from "./app";
+import Rootes from "./rootes";
 
-ReactDOM.render(<App />, document.getElementById("root"));
+ReactDOM.render(<Rootes />, document.getElementById("root"));
