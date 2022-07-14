@@ -34,9 +34,11 @@ const PostList = ({ query }: any) => {
 
   console.log(posts);
 
+  const postTitle = posts.edges.map((item: any) => item.node.title);
+
   return (
     <>
-      <h1>oi </h1>
+      <ul>{postTitle}</ul>
     </>
   );
 };
