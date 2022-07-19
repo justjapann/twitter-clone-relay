@@ -1,4 +1,4 @@
-import React, { Suspense } from "react";
+import React, { Suspense, useState } from "react";
 import { graphql } from "react-relay";
 import { useLazyLoadQuery } from "react-relay/hooks";
 import PostList from "./PostList";
