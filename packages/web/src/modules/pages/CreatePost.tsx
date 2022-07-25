@@ -29,15 +29,16 @@ const Post = () => {
 
   return (
     <Suspense fallback={<h1>Loading</h1>}>
+      {/*  <PostList query={query} /> */}
       <h1>Title</h1>
       <input
-        placeholder="Title"
+        placeholder="Enter your name"
         onChange={(e) => setTitle(e.target.value)}
       ></input>
 
       <h1>Body</h1>
       <input
-        placeholder="What's happening?"
+        placeholder="Enter your age"
         onChange={(e) => setBody(e.target.value)}
       ></input>
 
@@ -49,7 +50,7 @@ const Post = () => {
               body,
             },
             onCompleted() {
-              console.log("Thats it");
+              console.log("thats it");
             },
           })
         }

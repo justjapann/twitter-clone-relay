@@ -1,5 +1,5 @@
 import mongoose from "mongoose";
-import { MONGO_URI } from "../../../web/relay/RelayEnvironment";
+import { MONGO_URI } from "./environment";
 
 export const connectDatabase = async (): Promise<void> => {
   mongoose.connection
