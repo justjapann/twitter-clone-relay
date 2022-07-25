@@ -1,12 +1,13 @@
 import { ApolloServer } from "apollo-server";
 import { schema } from "../graphql/schema";
-import { setupDB, getDB } from "./databaseConnection";
+import { connectDatabase } from "./databaseConnection";
+
+connectDatabase()
+  .then()
+  .catch((error) => console.error(error));
 
 const server = new ApolloServer({
   schema,
-  context: {
-    setupDB,
-  },
 });
 
 server.listen(3333, () => {
