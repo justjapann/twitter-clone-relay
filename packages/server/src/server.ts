@@ -1,13 +1,14 @@
 import { ApolloServer } from "apollo-server";
 import { schema } from "../graphql/schema";
-import { setupDB, getDB } from "./databaseConnection";
+import { connectDatabase } from "./databaseConnection";
 
 const server = new ApolloServer({
   schema,
-  context: {
-    setupDB,
-  },
 });
+
+connectDatabase()
+  .then()
+  .catch((error) => console.error(error));
 
 server.listen(3333, () => {
   console.log("server is running in port 3333");
