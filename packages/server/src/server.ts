@@ -1,24 +1,15 @@
-import Koa from "koa";
-import Router from "@koa/router";
-import bodyparser from "koa-bodyparser";
-import { graphqlHTTP } from "koa-graphql";
+import { ApolloServer } from "apollo-server";
 import { schema } from "../graphql/schema";
-const app = new Koa();
-const router = new Router();
+import { connectDatabase } from "./databaseConnection";
 
-router.get("/", (ctx, next) => {
-  console.log("test");
+const server = new ApolloServer({
+  schema,
 });
 
-router.all(
-  "/graphql",
-  graphqlHTTP({
-    schema: schema,
-    graphiql: true,
-  })
-);
+connectDatabase()
+  .then()
+  .catch((error) => console.error(error));
 
-app.use(bodyparser());
-app.use(router.routes()).use(router.allowedMethods());
-
-export default app;
+server.listen(3333, () => {
+  console.log("server is running in port 3333");
+});
