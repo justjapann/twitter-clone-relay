@@ -39,6 +39,7 @@ const config: Configuration = {
   resolve: {
     extensions: [".tsx", ".ts", ".js"],
   },
+
   plugins: [
     new HtmlWebpackPlugin({
       template: path.join(__dirname, "public", "index.html"),
@@ -50,7 +51,7 @@ const config: Configuration = {
   ],
   devtool: "inline-source-map",
   devServer: {
-    port: 3000,
+    port: 3033,
     hot: true,
     compress: true,
     historyApiFallback: true,

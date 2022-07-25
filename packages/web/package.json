@@ -8,6 +8,9 @@
     "copy-env": "cp .env.example .env"
   },
   "dependencies": {
+    "@types/bcryptjs": "^2.4.2",
+    "bcryptjs": "^2.4.3",
+    "mongoose": "^6.4.6",
     "relay-compiler-language-typescript": "^15.0.1"
   }
 }
