@@ -1,7 +1,9 @@
-import { GraphQLNonNull, GraphQLObjectType } from "graphql";
+import { GraphQLNonNull, GraphQLObjectType, GraphQLList } from "graphql";
 import { connectionArgs, connectionFromArray } from "graphql-relay";
 import { PostConnection } from "../posts/PostType";
 import * as PostLoader from "../posts/PostLoader";
+import { UserModel } from "../user/UserModel";
+import { UserType } from "../user/UserType";
 
 const QueryType = new GraphQLObjectType({
   name: "Query",
@@ -14,6 +16,13 @@ const QueryType = new GraphQLObjectType({
       resolve: async (_, args, context) => {
         const data = await PostLoader.loadAll();
         return connectionFromArray(data, args);
+      },
+    },
+    allUsers: {
+      type: new GraphQLList(UserType),
+      async resolve(parent, args) {
+        const user = await UserModel.find({});
+        return user;
       },
     },
   }),

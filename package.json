@@ -2,8 +2,11 @@
   "name": "my-app",
   "version": "0.0.1",
   "dependencies": {
+    "@entria/graphql-mongo-helpers": "^1.1.2",
+    "@types/bcryptjs": "^2.4.2",
     "@types/mongoose": "^5.11.97",
-    "apollo-server": "^3.9.0",
+    "apollo-server": "^3.10.0",
+    "bcryptjs": "^2.4.3",
     "class-validator": "^0.13.2",
     "dotenv": "^16.0.1",
     "graphql": "^16.5.0",
