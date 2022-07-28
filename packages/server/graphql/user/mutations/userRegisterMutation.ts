@@ -2,13 +2,12 @@ import { GraphQLNonNull, GraphQLObjectType, GraphQLString } from "graphql";
 import { mutationWithClientMutationId } from "graphql-relay";
 import { UserModel } from "../UserModel";
 import { UserType } from "../UserType";
+import { generateJwtToken } from "../userAuth";
 
-export const CreateUserMutation = mutationWithClientMutationId({
-  name: "CreateUser",
+export const userRegisterMutation = mutationWithClientMutationId({
+  name: "userRegister",
   inputFields: {
     username: { type: new GraphQLNonNull(GraphQLString) },
-    displayName: { type: new GraphQLNonNull(GraphQLString) },
-    birthday: { type: new GraphQLNonNull(GraphQLString) },
     email: { type: new GraphQLNonNull(GraphQLString) },
     password: { type: new GraphQLNonNull(GraphQLString) },
   },
@@ -19,10 +18,22 @@ export const CreateUserMutation = mutationWithClientMutationId({
       email,
     });
 
-    return user.save();
+    const token: any = generateJwtToken(user._id);
+
+    await user.save();
+
+    return {
+      id: user._id,
+      sucess: "Congratulations! The user has registered with success!",
+      token,
+    };
   },
 
   outputFields: {
+    token: {
+      type: GraphQLString,
+      resolve: ({ token }) => token,
+    },
     user: {
       type: UserType,
       resolve: async ({ email }) => UserModel.findOne({ email }),

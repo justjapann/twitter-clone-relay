@@ -38,6 +38,11 @@ const config: Configuration = {
   },
   resolve: {
     extensions: [".tsx", ".ts", ".js"],
+    fallback: {
+      fs: false,
+      os: false,
+      path: false,
+    },
   },
   plugins: [
     new HtmlWebpackPlugin({
