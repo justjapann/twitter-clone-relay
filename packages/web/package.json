@@ -8,6 +8,12 @@
     "copy-env": "cp .env.example .env"
   },
   "dependencies": {
-    "relay-compiler-language-typescript": "^15.0.1"
+    "@chakra-ui/react": "^2.2.4",
+    "bcryptjs": "^2.4.3",
+    "formik": "^2.2.9",
+    "framer-motion": "^6.5.1",
+    "react-router-dom": "^6.3.0",
+    "relay-compiler-language-typescript": "^15.0.1",
+    "yup": "^0.32.11"
   }
 }

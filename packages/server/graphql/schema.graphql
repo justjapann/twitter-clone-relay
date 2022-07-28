@@ -23,6 +23,7 @@ type Query {
     """
     last: Int
   ): PostConnection!
+  allUsers: [User]
 }
 
 """
@@ -92,8 +93,18 @@ type Post {
   body: String
 }
 
+type User {
+  username: String!
+  displayName: String
+  birthday: String
+  email: String!
+  password: String!
+}
+
 type Mutation {
   CreatePost(input: CreatePostInput!): CreatePostPayload
+  CreateUserMutation(input: CreateUserInput!): CreateUserPayload
+  userLoginMutation(input: UserLoginInput!): UserLoginPayload
 }
 
 type CreatePostPayload {
@@ -106,5 +117,32 @@ type CreatePostPayload {
 input CreatePostInput {
   title: String!
   body: String!
+  clientMutationId: String
+}
+
+type CreateUserPayload {
+  token: String
+  user: User
+  clientMutationId: String
+}
+
+input CreateUserInput {
+  username: String!
+  displayName: String
+  birthday: String
+  email: String!
+  password: String!
+  clientMutationId: String
+}
+
+type UserLoginPayload {
+  token: String
+  user: User
+  clientMutationId: String
+}
+
+input UserLoginInput {
+  username: String!
+  password: String!
   clientMutationId: String
 }

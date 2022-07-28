@@ -13,5 +13,5 @@
       "noEmit": true,
       "jsx": "react"
     },
-    "include": ["packages/web/src"]
+    "include": ["packages/web/src", "packages/server/graphql/posts/resolvers/threadResolver.tsx", "packages/server/graphql/posts/models/thread.tsx"]
   }
