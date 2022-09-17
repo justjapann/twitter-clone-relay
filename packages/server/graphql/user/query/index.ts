@@ -1,2 +1,2 @@
-export * from "./QueryUser";
-export * from "./testQuery";
+export * from './QueryUser'
+export * from './testQuery'

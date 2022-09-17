@@ -1,28 +1,39 @@
-import jwt from "jsonwebtoken";
+import jwt from 'jsonwebtoken'
 
-import { Maybe } from "../../../types/src/Maybe";
+import { UserModel } from './UserModel'
+import { signJWT } from '../../src/utils/jwt'
 
-import { UserModel, UserDocument } from "./UserModel";
-import { JWT_SECRET } from "../../src/environment";
+export const signTokens = async (user) => {
+  const access_token = signJWT({ sub: user.id }, 'ACCESSTOKEN_PRIVATE_KEY', {
+    expiresIn: `${parseInt(process.env.ACCESS_TOKEN_TIMEOUT)}m`,
+  })
 
-export const getUser = async (
-  token: Maybe<string>
-): Promise<Maybe<UserDocument>> => {
-  if (!token) return null;
+  return { access_token }
+}
 
-  // TODO: Maybe it should be a crime
-  [, token] = token.split("JWT ");
+export const getUser = async (token: string | null | undefined) => {
+  if (!token) return { user: null }
 
-  const decodedToken = jwt.verify(token, JWT_SECRET!) as unknown as {
-    id: string;
-  };
+  try {
+    const publickKey = Buffer.from(process.env['ACCESSTOKEN_PUBLIC_KEY'], 'base64').toString(
+      'utf-8',
+    )
+    const decoded = jwt.verify(token, publickKey)
 
-  const user = await UserModel.findOne({ _id: decodedToken.id });
+    if (!decoded) {
+      return { user: null }
+    }
 
-  if (!user) return null;
+    const user = await UserModel.findById(decoded.sub)
 
-  return user;
-};
+    if (!user) {
+      return { user: null }
+    }
 
-export const generateJwtToken = (userId: string) =>
-  `JWT ${jwt.sign({ id: userId }, JWT_SECRET!)}`;
+    return {
+      user,
+    }
+  } catch (error) {
+    return { user: null }
+  }
+}

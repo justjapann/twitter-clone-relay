@@ -4,8 +4,11 @@ import posts from '../PostModel'
 import { PostEdge } from '../PostType'
 
 export default mutationWithClientMutationId({
-  name: 'CreatePost',
+  name: 'UpdatePost',
   inputFields: {
+    id: {
+      type: new GraphQLNonNull(GraphQLString),
+    },
     title: {
       type: new GraphQLNonNull(GraphQLString),
     },
@@ -13,24 +16,23 @@ export default mutationWithClientMutationId({
       type: new GraphQLNonNull(GraphQLString),
     },
   },
-  mutateAndGetPayload: async ({ title, genre }) => {
-    const postAlredyExists = await posts.findOne({ title: title })
-    if (postAlredyExists) {
-      return {
-        post: null,
-        error: 'Post already exists',
-      }
-    }
-    const post = new posts({
-      title: title,
-      genre: genre,
-    })
-    post.save((err) => {
-      if (err) {
-        return { error: err.message }
-      }
-    })
-    return { post: post }
+  mutateAndGetPayload: async ({ id, title, genre }) => {
+    const post = await posts
+      .findOneAndUpdate({ _id: id }, { title, genre })
+      .then((post) => {
+        console.log(post.id)
+        return {
+          post: {
+            id: post.id,
+            title: post.title,
+            genre: post.genre,
+          },
+        }
+      })
+      .catch((e) => {
+        return { error: 'post not found' }
+      })
+    return post
   },
   outputFields: {
     postEdge: {

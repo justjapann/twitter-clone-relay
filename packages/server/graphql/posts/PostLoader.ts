@@ -1,11 +1,9 @@
-import { readDatabase } from "../../src/utils/index";
+import posts from './PostModel'
 
-export async function loadAll() {
-  const posts = await readDatabase("posts");
-
-  if (!posts) {
-    return null;
+export async function getAll() {
+  const postsList = await posts.find({})
+  if (!postsList) {
+    return null
   }
-
-  return posts.reverse();
+  return postsList
 }

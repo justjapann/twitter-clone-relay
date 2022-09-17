@@ -1,27 +1,29 @@
-import { GraphQLObjectType, GraphQLString } from "graphql";
-import { connectionDefinitions, globalIdField } from "graphql-relay";
+import { GraphQLObjectType, GraphQLString } from 'graphql'
+import { connectionDefinitions } from 'graphql-relay'
 
 const PostType = new GraphQLObjectType({
-  name: "Post",
-  description: "Post Type",
+  name: 'Post',
+  description: 'Post Type',
   fields: () => ({
-    id: globalIdField("Post"),
+    id: {
+      type: GraphQLString,
+      resolve: (post) => post._id,
+    },
     title: {
       type: GraphQLString,
       resolve: (post) => post.title,
     },
-    body: {
+    genre: {
       type: GraphQLString,
-      resolve: (post) => post.body,
+      resolve: (post) => post.genre,
     },
   }),
-});
+})
 
-const { connectionType: PostConnection, edgeType: PostEdge } =
-  connectionDefinitions({
-    nodeType: PostType,
-  });
+const { connectionType: PostConnection, edgeType: PostEdge } = connectionDefinitions({
+  nodeType: PostType,
+})
 
-export { PostConnection, PostEdge };
+export { PostConnection, PostEdge }
 
-export default PostType;
+export default PostType
