@@ -1,10 +1,9 @@
-import { extendTheme } from "@chakra-ui/react";
-// eslint-disable-next-line import/named
-import { Theme } from "@chakra-ui/theme";
+import { extendTheme } from '@chakra-ui/react'
+import { Theme } from '@chakra-ui/theme'
 
-import { DeepPartial } from "../../../types/src/DeepPartial";
+import { DeepPartial } from '../../../types/src/DeepPartial'
 
-import { buttonTheme as Button } from "../Button";
+import { buttonTheme as Button } from '../Button'
 
 const overrides: DeepPartial<Theme> = {
   components: {
@@ -13,8 +12,8 @@ const overrides: DeepPartial<Theme> = {
   // TODO: In the future, implements dark theme
   config: {
     useSystemColorMode: false,
-    initialColorMode: "light",
+    initialColorMode: 'light',
   },
-};
+}
 
-export const theme = extendTheme(overrides);
+export const theme = extendTheme(overrides)
