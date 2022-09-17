@@ -12,20 +12,20 @@ export default mutationWithClientMutationId({
     title: {
       type: new GraphQLNonNull(GraphQLString),
     },
-    genre: {
+    body: {
       type: new GraphQLNonNull(GraphQLString),
     },
   },
-  mutateAndGetPayload: async ({ id, title, genre }) => {
+  mutateAndGetPayload: async ({ id, title, body }) => {
     const post = await posts
-      .findOneAndUpdate({ _id: id }, { title, genre })
+      .findOneAndUpdate({ _id: id }, { title, body })
       .then((post) => {
         console.log(post.id)
         return {
           post: {
             id: post.id,
             title: post.title,
-            genre: post.genre,
+            body: post.body,
           },
         }
       })

@@ -1,5 +1,5 @@
 /**
- * @generated SignedSource<<e6d21dc7bf6ede0b6175cf9b37b4fdb8>>
+ * @generated SignedSource<<0a9756cd8e9d1a2c8fd50db3bc1f92c1>>
  * @lightSyntaxTransform
  * @nogrep
  */
@@ -18,7 +18,7 @@ export type CreatePostMutation$data = {
     readonly postEdge: {
       readonly node: {
         readonly body: string | null;
-        readonly id: string;
+        readonly id: string | null;
         readonly title: string | null;
       } | null;
     } | null;

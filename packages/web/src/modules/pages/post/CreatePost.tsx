@@ -1,7 +1,7 @@
 import React, { Suspense, useState } from 'react'
 import { graphql, useMutation } from 'react-relay'
 import { useLazyLoadQuery } from 'react-relay/hooks'
-import PostList from '../PostList'
+import PostList from './PostList'
 import type {
   CreatePostMutation$variables,
   CreatePostMutation$data,

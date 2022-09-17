@@ -1,6 +1,6 @@
 import { Variables } from 'relay-runtime'
 
-export const fetchGraphQL = async (text: string, variables: Variables) => {
+export const fetchGraphQL = async (text: string, variables?: any) => {
   const response = await fetch('http://localhost:3333/', {
     method: 'POST',
     headers: {

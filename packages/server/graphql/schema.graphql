@@ -1,5 +1,5 @@
 """
-The root of all queries
+Root query
 """
 type Query {
   posts(
@@ -23,7 +23,6 @@ type Query {
     """
     last: Int
   ): PostConnection!
-  allUsers: [User]
 }
 
 """
@@ -85,32 +84,20 @@ type PostEdge {
 Post Type
 """
 type Post {
-  """
-  The ID of an object
-  """
-  id: ID!
+  id: String
   title: String
   body: String
 }
 
-type User {
-  username: String!
-  displayName: String
-  birthday: String
-  email: String!
-  password: String!
-}
-
 type Mutation {
   CreatePost(input: CreatePostInput!): CreatePostPayload
-  CreateUserMutation(input: CreateUserInput!): CreateUserPayload
-  userLoginMutation(input: UserLoginInput!): UserLoginPayload
+  DeletePost(input: DeletePostInput!): DeletePostPayload
+  UpdatePost(input: UpdatePostInput!): UpdatePostPayload
 }
 
 type CreatePostPayload {
   postEdge: PostEdge
   error: String
-  success: String
   clientMutationId: String
 }
 
@@ -120,29 +107,26 @@ input CreatePostInput {
   clientMutationId: String
 }
 
-type CreateUserPayload {
-  token: String
-  user: User
+type DeletePostPayload {
+  error: String
+  success: String
   clientMutationId: String
 }
 
-input CreateUserInput {
-  username: String!
-  displayName: String
-  birthday: String
-  email: String!
-  password: String!
+input DeletePostInput {
+  id: String!
   clientMutationId: String
 }
 
-type UserLoginPayload {
-  token: String
-  user: User
+type UpdatePostPayload {
+  postEdge: PostEdge
+  error: String
   clientMutationId: String
 }
 
-input UserLoginInput {
-  username: String!
-  password: String!
+input UpdatePostInput {
+  id: String!
+  title: String!
+  body: String!
   clientMutationId: String
 }

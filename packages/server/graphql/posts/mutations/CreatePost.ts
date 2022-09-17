@@ -9,11 +9,11 @@ export default mutationWithClientMutationId({
     title: {
       type: new GraphQLNonNull(GraphQLString),
     },
-    genre: {
+    body: {
       type: new GraphQLNonNull(GraphQLString),
     },
   },
-  mutateAndGetPayload: async ({ title, genre }) => {
+  mutateAndGetPayload: async ({ title, body }) => {
     const postAlredyExists = await posts.findOne({ title: title })
     if (postAlredyExists) {
       return {
@@ -23,7 +23,7 @@ export default mutationWithClientMutationId({
     }
     const post = new posts({
       title: title,
-      genre: genre,
+      body: body,
     })
     post.save((err) => {
       if (err) {
