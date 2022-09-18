@@ -1,0 +1,25 @@
+.container-posts {
+  height: 190px;
+  border-top: 1.5px solid rgb(105, 105, 105);
+  padding-left: 30px;
+}
+
+.title-post {
+  color: white;
+  font-weight: bold;
+  font-size: 12 !important;
+  padding-top: 15px;
+}
+
+.body-post {
+  padding-top: 15px;
+  color: rgb(155, 155, 155);
+}
+
+.button-delete {
+  color: rgb(173, 173, 173);
+  margin-left: 450px;
+  margin-top: 70px;
+  cursor: pointer;
+  border: none;
+}

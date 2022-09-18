@@ -1,0 +1,60 @@
+.container-menu {
+  margin-top: 10px;
+  margin-left: 350px;
+}
+
+.container-menu ul {
+  list-style-type: none;
+}
+
+.container-menu ul li a {
+  color: white;
+  font-size: 19px;
+  text-decoration: none;
+  display: block;
+  padding-left: 10px;
+}
+
+.container-menu ul li {
+  margin-top: 30px;
+  flex-direction: row;
+  display: flex;
+}
+
+.container-menu ul li a:hover {
+  color: #00acee;
+}
+
+.container-button {
+  margin-left: 70px;
+  margin-top: 45px;
+}
+
+.button {
+  width: 170px;
+  height: 45px;
+  background-color: #00acee;
+  border-radius: 25px;
+  border: 1px solid #00acee;
+  color: white;
+  font-size: 17px;
+  font-weight: bold;
+}
+
+.button:hover {
+  background-color: #0595ce;
+  cursor: pointer;
+}
+
+.icon {
+  color: white;
+  width: 20px;
+  height: 20px;
+}
+
+.logo {
+  color: white;
+  width: 40px;
+  height: 40px;
+  margin-left: 40px;
+}

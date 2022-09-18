@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react'
 import { IPostEdge } from 'modules/types/PostType'
 import { fetchGraphQL } from '../../../../relay/fetchGraphQL'
 import PostsList from '../../../shared-components/Post/index'
+import '../../../styles/Home.css'
 
 const PostList = () => {
   const [postsList, setPostsList] = useState<IPostEdge[]>([])
@@ -33,11 +34,7 @@ const PostList = () => {
     })
   }, [])
 
-  return (
-    <>
-      <PostsList postsList={postsList} />
-    </>
-  )
+  return <PostsList postsList={postsList} setPostsList={setPostsList} />
 }
 
 export default PostList

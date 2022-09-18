@@ -1,0 +1,19 @@
+* {
+  margin: 0;
+  box-sizing: border-box;
+  background-color: rgb(4, 4, 4);
+  font-family: inherit;
+}
+
+.container {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+}
+
+.container-post {
+  border-right: 1.5px solid rgb(105, 105, 105);
+}
+
+.container-sidebar {
+  border-right: 1.5px solid rgb(105, 105, 105);
+}

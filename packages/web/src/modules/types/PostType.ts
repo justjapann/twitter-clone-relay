@@ -1,10 +1,10 @@
 export interface IPost {
-  id: String
-  title: String
-  body: String
+  id: string
+  title: string
+  body: string
 }
 
 export interface IPostEdge {
-  cursor: String
+  cursor: string
   node: IPost
 }
