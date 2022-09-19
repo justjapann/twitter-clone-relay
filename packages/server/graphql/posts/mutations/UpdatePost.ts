@@ -9,22 +9,18 @@ export default mutationWithClientMutationId({
     id: {
       type: new GraphQLNonNull(GraphQLString),
     },
-    title: {
-      type: new GraphQLNonNull(GraphQLString),
-    },
     body: {
       type: new GraphQLNonNull(GraphQLString),
     },
   },
-  mutateAndGetPayload: async ({ id, title, body }) => {
+  mutateAndGetPayload: async ({ id, body }) => {
     const post = await posts
-      .findOneAndUpdate({ _id: id }, { title, body })
+      .findOneAndUpdate({ _id: id }, { body })
       .then((post) => {
         console.log(post.id)
         return {
           post: {
             id: post.id,
-            title: post.title,
             body: post.body,
           },
         }

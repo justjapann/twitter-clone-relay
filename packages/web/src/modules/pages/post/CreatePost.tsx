@@ -4,12 +4,11 @@ import type { CreatePostMutation } from './__generated__/CreatePostMutation.grap
 import '../../../styles/CreatePost.css'
 
 const _CreatePostMutation = graphql`
-  mutation CreatePostMutation($title: String!, $body: String!) {
-    CreatePost(input: { title: $title, body: $body }) {
+  mutation CreatePostMutation($body: String!) {
+    CreatePost(input: { body: $body }) {
       postEdge {
         node {
           id
-          title
           body
         }
       }
@@ -38,7 +37,6 @@ const Post = () => {
           onClick={() =>
             commit({
               variables: {
-                title,
                 body,
               },
               onCompleted() {

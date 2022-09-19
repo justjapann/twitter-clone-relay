@@ -9,10 +9,6 @@ const PostType = new GraphQLObjectType({
       type: GraphQLString,
       resolve: (post) => post._id,
     },
-    title: {
-      type: GraphQLString,
-      resolve: (post) => post.title,
-    },
     body: {
       type: GraphQLString,
       resolve: (post) => post.body,

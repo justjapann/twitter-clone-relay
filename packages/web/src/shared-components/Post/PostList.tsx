@@ -35,7 +35,6 @@ export default function PostCard(props: {
 
   const card = (post: IPost) => (
     <div className='container-posts'>
-      <h2 className='title-post'>{post.title}</h2>
       <h4 className='body-post'>{post.body}</h4>
 
       <button
@@ -50,7 +49,7 @@ export default function PostCard(props: {
   )
 
   return (
-    <div>
+    <div className='container-posts-bar'>
       <ul>
         <li>{card(props.post.node)}</li>
       </ul>

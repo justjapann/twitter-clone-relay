@@ -14,7 +14,6 @@ const PostList = () => {
           edges {
             node {
               id
-              title
               body
             }
             cursor

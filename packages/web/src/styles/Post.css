@@ -23,3 +23,7 @@
   cursor: pointer;
   border: none;
 }
+
+.container-posts-bar ul {
+  list-style-type: none;
+}

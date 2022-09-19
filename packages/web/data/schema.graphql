@@ -85,7 +85,6 @@ Post Type
 """
 type Post {
   id: String
-  title: String
   body: String
 }
 
@@ -102,7 +101,6 @@ type CreatePostPayload {
 }
 
 input CreatePostInput {
-  title: String!
   body: String!
   clientMutationId: String
 }
@@ -126,7 +124,6 @@ type UpdatePostPayload {
 
 input UpdatePostInput {
   id: String!
-  title: String!
   body: String!
   clientMutationId: String
 }

@@ -6,15 +6,12 @@ import { PostEdge } from '../PostType'
 export default mutationWithClientMutationId({
   name: 'CreatePost',
   inputFields: {
-    title: {
-      type: new GraphQLNonNull(GraphQLString),
-    },
     body: {
       type: new GraphQLNonNull(GraphQLString),
     },
   },
-  mutateAndGetPayload: async ({ title, body }) => {
-    const postAlredyExists = await posts.findOne({ title: title })
+  mutateAndGetPayload: async ({ body }) => {
+    const postAlredyExists = await posts.findOne({ body: body })
     if (postAlredyExists) {
       return {
         post: null,
@@ -22,7 +19,6 @@ export default mutationWithClientMutationId({
       }
     }
     const post = new posts({
-      title: title,
       body: body,
     })
     post.save((err) => {
