@@ -1,6 +1,7 @@
 import { ApolloServer } from 'apollo-server'
 import { schema } from '../graphql/schema'
 import { connectDatabase } from './databaseConnection'
+import UserQuery from '../../web/src/modules/pages/post/UserQuery'
 
 /* const Koa = require('koa')
 const mount = require('koa-mount')

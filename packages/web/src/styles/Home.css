@@ -1,13 +1,13 @@
 * {
   margin: 0;
   box-sizing: border-box;
-  background-color: rgb(4, 4, 4);
   font-family: inherit;
 }
 
 .container {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
+  background-color: rgb(4, 4, 4);
 }
 
 .container-post {
