@@ -13,7 +13,7 @@ export const getUser = async (token: Maybe<string>): Promise<Maybe<UserDocument>
     // TODO: Maybe it should be a crime
   ;[, token] = token.split('JWT ')
 
-  const decodedToken = jwt.verify(token, config.JWT_SECRET) as { id: string }
+  const decodedToken = jwt.verify(token, config.JWT_SECRET as string) as { id: string }
 
   const user = await UserModel.findOne({ _id: decodedToken.id })
 
@@ -23,4 +23,4 @@ export const getUser = async (token: Maybe<string>): Promise<Maybe<UserDocument>
 }
 
 export const generateJwtToken = (userId: string) =>
-  `JWT ${jwt.sign({ id: userId }, config.JWT_SECRET)}`
+  `JWT ${jwt.sign({ id: userId }, config.JWT_SECRET as string)}`

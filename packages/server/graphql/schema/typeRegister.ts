@@ -1,4 +1,4 @@
-import { GraphQLObjectType, GraphQLTypeResolver } from 'graphql'
+import { GraphQLObjectType } from 'graphql'
 
 import { fromGlobalId, nodeDefinitions } from 'graphql-relay'
 
@@ -31,7 +31,7 @@ export const { nodeField, nodesField, nodeInterface } = nodeDefinitions(
 
 export const getTypesLoaders = () => typesLoaders
 
-export const registerTypeLoader = (type: GraphQLObjectType, load: Load) => {
+export const registerTypeLoader = (type: GraphQLObjectType, load: any) => {
   typesLoaders[type.name] = {
     type,
     load,

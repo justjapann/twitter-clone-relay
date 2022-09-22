@@ -1,7 +1,8 @@
 import { GraphQLObjectType, GraphQLString, GraphQLNonNull } from 'graphql'
 import { globalIdField } from 'graphql-relay'
 import { connectionDefinitions, connectionArgs, withFilter } from '@entria/graphql-mongo-helpers'
-import { registerTypeLoader, nodeInterface } from './graphql/typeRegister'
+
+import { registerTypeLoader, nodeInterface } from '../schema/typeRegister'
 
 import { User } from './UserModel'
 import { load } from './UserLoader'
@@ -21,6 +22,10 @@ export const UserType = new GraphQLObjectType<User>({
     email: {
       type: new GraphQLNonNull(GraphQLString),
       resolve: (user) => user.email,
+    },
+    password: {
+      type: new GraphQLNonNull(GraphQLString),
+      resolve: (user) => user.password,
     },
   }),
   interfaces: () => [nodeInterface],

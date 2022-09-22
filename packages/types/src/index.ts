@@ -1,2 +1,2 @@
-export { DeepPartial } from "./DeepPartial";
-export { Maybe } from "./Maybe";
+export type { DeepPartial } from './DeepPartial'
+export type { Maybe } from './Maybe'

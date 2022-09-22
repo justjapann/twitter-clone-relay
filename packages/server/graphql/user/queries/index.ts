@@ -1,1 +1,1 @@
-export * from './userMeQuery'
+export * from './findUsers'
