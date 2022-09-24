@@ -1,6 +1,6 @@
 import React from 'react'
-import { IPostEdge } from '../../modules/types/PostType'
-import PostCard from './PostList'
+import { IPostEdge } from '../../types/PostType'
+import PostCard from './RenderPost'
 
 function PostsList(props: {
   postsList: IPostEdge[]

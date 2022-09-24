@@ -4,7 +4,7 @@
   "scripts": {
     "start:dev": "webpack serve --hot",
     "build": "webpack --config webpack.config.ts",
-    "relay": "relay-compiler",
+    "relay": "yarn run relay-compiler",
     "copy-env": "cp .env.example .env",
     "lint": "eslint src/**/*.{ts,tsx,json}",
     "lint:fix": "eslint --fix 'src/**/*.{ts,tsx,json}'",

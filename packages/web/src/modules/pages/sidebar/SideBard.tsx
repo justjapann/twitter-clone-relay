@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-non-null-assertion */
 /* eslint-disable camelcase */
 import React, { useState } from 'react'
 import '../../../styles/SideBar.css'
@@ -7,7 +8,6 @@ import { AiOutlineMail, AiOutlineTwitter } from 'react-icons/ai'
 import { BsFillPersonFill, BsFillPeopleFill, BsBookmark } from 'react-icons/bs'
 import { BiHash } from 'react-icons/bi'
 import { CgMoreO } from 'react-icons/cg'
-import ModalLogin from './ModalLogin'
 import { useNavigate } from 'react-router-dom'
 import { useAuth } from '../../auth/useAuth'
 
@@ -21,6 +21,10 @@ const SideBar = () => {
     })
   }
 
+  const handleLogout2 = () => {
+    navigate('/profile', { replace: true })
+  }
+
   return (
     <div className='container'>
       <div className='container-menu'>
@@ -28,7 +32,7 @@ const SideBar = () => {
         <ul>
           <li>
             <GoHome className='icon' />
-            <a href='#'>Home</a>
+            <a href='/feed'>Home</a>
           </li>
           <li>
             <BiHash className='icon' />
@@ -52,7 +56,7 @@ const SideBar = () => {
           </li>
           <li>
             <BsFillPersonFill className='icon' />
-            <a href='#'>Profile</a>
+            <a href='/profile'>Profile</a>
           </li>
           <li>
             <CgMoreO className='icon' />

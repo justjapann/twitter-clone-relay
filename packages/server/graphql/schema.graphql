@@ -22,8 +22,7 @@ type Query {
     ids: [ID!]!
   ): [Node]!
   posts(after: String, first: Int, before: String, last: Int): PostConnection!
-  me: User
-  allUsers: [User]
+  queryUser(username: String): User
   userRegisterMutation(input: UserRegisterInput!): UserRegisterPayload
   userLoginMutation(input: UserLoginInput!): UserLoginPayload
 }

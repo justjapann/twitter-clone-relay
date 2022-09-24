@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import { IPostEdge } from '../../types/PostType'
 import { fetchGraphQL } from '../../../../relay/fetchGraphQL'
-import PostsList from '../../../shared-components/Post/index'
+import PostsList from './index'
 import '../../../styles/Home.css'
 
 const PostList = () => {

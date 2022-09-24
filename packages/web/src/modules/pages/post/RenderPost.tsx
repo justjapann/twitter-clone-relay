@@ -1,7 +1,7 @@
 import React from 'react'
-import { IPost, IPostEdge } from '../../modules/types/PostType'
-import { fetchGraphQL } from '../../../relay/fetchGraphQL'
-import '../../styles/Post.css'
+import { IPost, IPostEdge } from '../../types/PostType'
+import { fetchGraphQL } from '../../../../relay/fetchGraphQL'
+import '../../../styles/Post.css'
 
 export default function PostCard(props: {
   post: IPostEdge
