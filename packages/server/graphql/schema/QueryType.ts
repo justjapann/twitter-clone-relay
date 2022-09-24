@@ -5,6 +5,7 @@ import { PostConnection } from '../posts/PostType'
 import { UserModel } from '../user/UserModel'
 import { UserType } from '../user/UserType'
 import * as userMutations from '../user/mutations'
+import * as userQueries from '../user/queries'
 import { nodeField, nodesField } from './typeRegister'
 import UserLoader from '../user/UserLoader'
 import { connectionArgs } from '@entria/graphql-mongo-helpers'
@@ -23,18 +24,12 @@ const QueryType = new GraphQLObjectType({
         return connectionFromArray(data, args)
       },
     },
-    me: {
+    queryUser: {
       type: UserType,
       resolve: (root, args, context) => UserLoader.load(context, context.user?._id),
     },
-    allUsers: {
-      type: new GraphQLList(UserType),
-      async resolve(parent, args) {
-        const user = await UserModel.find({})
-        return user
-      },
-    },
     ...userMutations,
+    ...userQueries,
   }),
 })
 export default QueryType
