@@ -1,18 +1,20 @@
 import React, { useState } from 'react'
-import { useMutation } from 'react-relay'
-import { UserLogin } from './UserLoginMutation'
-import { useAuth } from '../../auth/useAuth'
 import { useNavigate } from 'react-router-dom'
+import { useMutation } from 'react-relay'
+import { UserRegister } from './UserRegisterMutation'
+import { useAuth } from '../../auth/useAuth'
 
 import type {
-  UserLoginMutation,
-  UserLoginMutation$data,
-} from './__generated__/UserLoginMutation.graphql'
+  UserRegisterMutation,
+  UserRegisterMutation$data,
+} from './__generated__/UserRegisterMutation.graphql'
 
-export default function ModalLogin() {
+export default function RegisterModal() {
   const [username, setUsername] = useState('')
+  const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
-  const [commit] = useMutation<UserLoginMutation>(UserLogin)
+  const [commit] = useMutation<UserRegisterMutation>(UserRegister)
+
   const { signin } = useAuth()
   const navigate = useNavigate()
 
@@ -23,6 +25,12 @@ export default function ModalLogin() {
         className='input-login'
         placeholder='Your name'
       />
+      <input
+        onChange={(e) => setEmail(e.target.value)}
+        className='input-login'
+        placeholder='Your email'
+      />
+
       <input
         onChange={(e) => setPassword(e.target.value)}
         className='input-login'
@@ -37,9 +45,10 @@ export default function ModalLogin() {
               variables: {
                 username,
                 password,
+                email,
               },
-              onCompleted({ userLoginMutation }: UserLoginMutation$data) {
-                signin(userLoginMutation?.token, () => {
+              onCompleted({ userRegisterMutation }: UserRegisterMutation$data) {
+                signin(userRegisterMutation?.token, () => {
                   navigate('/feed', { replace: true })
                 })
               },
@@ -47,7 +56,7 @@ export default function ModalLogin() {
           }}
           className='button-login-modal'
         >
-          Login
+          Register
         </button>
       </div>
     </div>

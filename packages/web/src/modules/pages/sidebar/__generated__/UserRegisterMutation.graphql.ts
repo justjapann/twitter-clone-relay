@@ -1,5 +1,5 @@
 /**
- * @generated SignedSource<<0425793421e7d4050bbd32415cbb5d95>>
+ * @generated SignedSource<<f886be708c5fefffb29bf70bd38c927c>>
  * @lightSyntaxTransform
  * @nogrep
  */
@@ -9,49 +9,59 @@
 // @ts-nocheck
 
 import { ConcreteRequest, Mutation } from 'relay-runtime';
-export type ModalLoginMutation$variables = {
+export type UserRegisterMutation$variables = {
+  displayName?: string | null;
   email: string;
   password: string;
   username: string;
 };
-export type ModalLoginMutation$data = {
+export type UserRegisterMutation$data = {
   readonly userRegisterMutation: {
-    readonly clientMutationId: string | null;
-    readonly token: string | null;
-    readonly user: {
+    readonly me: {
       readonly email: string;
-      readonly password: string;
+      readonly id: string;
       readonly username: string;
     } | null;
+    readonly token: string | null;
   } | null;
 };
-export type ModalLoginMutation = {
-  response: ModalLoginMutation$data;
-  variables: ModalLoginMutation$variables;
+export type UserRegisterMutation = {
+  response: UserRegisterMutation$data;
+  variables: UserRegisterMutation$variables;
 };
 
 const node: ConcreteRequest = (function(){
 var v0 = {
   "defaultValue": null,
   "kind": "LocalArgument",
-  "name": "email"
+  "name": "displayName"
 },
 v1 = {
   "defaultValue": null,
   "kind": "LocalArgument",
-  "name": "password"
+  "name": "email"
 },
 v2 = {
   "defaultValue": null,
   "kind": "LocalArgument",
+  "name": "password"
+},
+v3 = {
+  "defaultValue": null,
+  "kind": "LocalArgument",
   "name": "username"
 },
-v3 = [
+v4 = [
   {
     "alias": null,
     "args": [
       {
         "fields": [
+          {
+            "kind": "Variable",
+            "name": "displayName",
+            "variableName": "displayName"
+          },
           {
             "kind": "Variable",
             "name": "email",
@@ -72,7 +82,7 @@ v3 = [
         "name": "input"
       }
     ],
-    "concreteType": "userRegisterPayload",
+    "concreteType": "UserRegisterPayload",
     "kind": "LinkedField",
     "name": "userRegisterMutation",
     "plural": false,
@@ -80,11 +90,25 @@ v3 = [
       {
         "alias": null,
         "args": null,
+        "kind": "ScalarField",
+        "name": "token",
+        "storageKey": null
+      },
+      {
+        "alias": null,
+        "args": null,
         "concreteType": "User",
         "kind": "LinkedField",
-        "name": "user",
+        "name": "me",
         "plural": false,
         "selections": [
+          {
+            "alias": null,
+            "args": null,
+            "kind": "ScalarField",
+            "name": "id",
+            "storageKey": null
+          },
           {
             "alias": null,
             "args": null,
@@ -96,31 +120,10 @@ v3 = [
             "alias": null,
             "args": null,
             "kind": "ScalarField",
-            "name": "password",
-            "storageKey": null
-          },
-          {
-            "alias": null,
-            "args": null,
-            "kind": "ScalarField",
             "name": "email",
             "storageKey": null
           }
         ],
-        "storageKey": null
-      },
-      {
-        "alias": null,
-        "args": null,
-        "kind": "ScalarField",
-        "name": "token",
-        "storageKey": null
-      },
-      {
-        "alias": null,
-        "args": null,
-        "kind": "ScalarField",
-        "name": "clientMutationId",
         "storageKey": null
       }
     ],
@@ -132,37 +135,39 @@ return {
     "argumentDefinitions": [
       (v0/*: any*/),
       (v1/*: any*/),
-      (v2/*: any*/)
+      (v2/*: any*/),
+      (v3/*: any*/)
     ],
     "kind": "Fragment",
     "metadata": null,
-    "name": "ModalLoginMutation",
-    "selections": (v3/*: any*/),
+    "name": "UserRegisterMutation",
+    "selections": (v4/*: any*/),
     "type": "Mutation",
     "abstractKey": null
   },
   "kind": "Request",
   "operation": {
     "argumentDefinitions": [
-      (v2/*: any*/),
+      (v3/*: any*/),
+      (v0/*: any*/),
       (v1/*: any*/),
-      (v0/*: any*/)
+      (v2/*: any*/)
     ],
     "kind": "Operation",
-    "name": "ModalLoginMutation",
-    "selections": (v3/*: any*/)
+    "name": "UserRegisterMutation",
+    "selections": (v4/*: any*/)
   },
   "params": {
-    "cacheID": "3bcc1fc722d03cab1aa77f9b48afa91e",
+    "cacheID": "b6811739d4861a07fb041df469adbd1a",
     "id": null,
     "metadata": {},
-    "name": "ModalLoginMutation",
+    "name": "UserRegisterMutation",
     "operationKind": "mutation",
-    "text": "mutation ModalLoginMutation(\n  $username: String!\n  $password: String!\n  $email: String!\n) {\n  userRegisterMutation(input: {username: $username, password: $password, email: $email}) {\n    user {\n      username\n      password\n      email\n    }\n    token\n    clientMutationId\n  }\n}\n"
+    "text": "mutation UserRegisterMutation(\n  $username: String!\n  $displayName: String\n  $email: String!\n  $password: String!\n) {\n  userRegisterMutation(input: {username: $username, displayName: $displayName, email: $email, password: $password}) {\n    token\n    me {\n      id\n      username\n      email\n    }\n  }\n}\n"
   }
 };
 })();
 
-(node as any).hash = "595315f22e1448b25a9861ccf8d426d6";
+(node as any).hash = "c8322517ad0ea7d1bd55b480e3dab62e";
 
 export default node;

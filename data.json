@@ -1,0 +1,42 @@
+{
+  "data": {
+    "posts": {
+      "edges": [
+        {
+          "node": {
+            "id": "63260519495ea0dc545cc84f",
+            "body": "body test input2"
+          },
+          "cursor": "YXJyYXljb25uZWN0aW9uOjA="
+        },
+        {
+          "node": {
+            "id": "6327c2e267e74466380eb02d",
+            "body": "Champions"
+          },
+          "cursor": "YXJyYXljb25uZWN0aW9uOjE="
+        },
+        {
+          "node": {
+            "id": "6327c86d32328728372b6157",
+            "body": "Only body"
+          },
+          "cursor": "YXJyYXljb25uZWN0aW9uOjI="
+        },
+        {
+          "node": {
+            "id": "6327c9e532328728372b6164",
+            "body": "asup"
+          },
+          "cursor": "YXJyYXljb25uZWN0aW9uOjM="
+        }
+      ],
+      "pageInfo": {
+        "hasNextPage": false,
+        "hasPreviousPage": false,
+        "startCursor": "YXJyYXljb25uZWN0aW9uOjA=",
+        "endCursor": "YXJyYXljb25uZWN0aW9uOjM="
+      }
+    }
+  }
+}

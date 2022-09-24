@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import { IPostEdge } from 'modules/types/PostType'
+import { IPostEdge } from '../../types/PostType'
 import { fetchGraphQL } from '../../../../relay/fetchGraphQL'
 import PostsList from '../../../shared-components/Post/index'
 import '../../../styles/Home.css'

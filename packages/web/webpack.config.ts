@@ -1,31 +1,40 @@
-/* eslint-disable */
-import path from 'path'
-import { Configuration as WebpackConfiguration, HotModuleReplacementPlugin } from 'webpack'
-import { Configuration as WebpackDevServerConfiguration } from 'webpack-dev-server'
-import HtmlWebpackPlugin from 'html-webpack-plugin'
-import ForkTsCheckerWebpackPlugin from 'fork-ts-checker-webpack-plugin'
+/* eslint-disable quotes */
+/* eslint-disable @typescript-eslint/no-var-requires */
+const webpack = require('webpack')
+const path = require('path')
+const HtmlWebpackPlugin = require('html-webpack-plugin')
+const ReactRefreshPlugin = require('@pmmmwh/react-refresh-webpack-plugin')
+const NodePolyfillPlugin = require('node-polyfill-webpack-plugin')
+const dotenv = require('dotenv').config({
+  path: path.resolve(__dirname, '.env'),
+})
 
-interface Configuration extends WebpackConfiguration {
-  devServer?: WebpackDevServerConfiguration
-}
+const cwd = process.cwd()
 
-const config: Configuration = {
+// TODO: It should be turn `webpack.config.dev.js` in the future
+module.exports = {
   mode: 'development',
+  devtool: 'cheap-module-source-map',
+  context: path.resolve(cwd, './'),
+  entry: './src/index.tsx',
   output: {
-    path: path.resolve(__dirname, 'dist'),
+    path: path.join(cwd, 'dist'),
   },
-  entry: path.join(__dirname, 'src', 'index.tsx'),
+  resolve: {
+    extensions: ['.ts', '.tsx', '.mjs', '.js', '.jsx'],
+    alias: {
+      '@': path.resolve(__dirname, 'src'),
+    },
+    fallback: {
+      fs: false,
+    },
+  },
   module: {
     rules: [
       {
-        test: /\.(ts|js)x?$/i,
+        test: /\.(js|jsx|ts|tsx)$/,
         exclude: /node_modules/,
-        use: {
-          loader: 'babel-loader',
-          options: {
-            presets: ['@babel/preset-env', '@babel/preset-react', '@babel/preset-typescript'],
-          },
-        },
+        use: ['babel-loader?cacheDirectory'],
       },
       {
         test: /\.css$/i,
@@ -33,30 +42,30 @@ const config: Configuration = {
       },
     ],
   },
-  resolve: {
-    extensions: ['.tsx', '.ts', '.js'],
-    fallback: {
-      fs: false,
-      os: false,
-      path: false,
-    },
-  },
-  plugins: [
-    new HtmlWebpackPlugin({
-      template: path.join(__dirname, 'public', 'index.html'),
-    }),
-    new HotModuleReplacementPlugin(),
-    new ForkTsCheckerWebpackPlugin({
-      async: false,
-    }),
-  ],
-  devtool: 'inline-source-map',
   devServer: {
     port: 3000,
     hot: true,
     compress: true,
     historyApiFallback: true,
   },
+  plugins: [
+    // new Dotenv({
+    //   path: './.env',
+    //   safe: true,
+    //   ignoreStub: true,
+    // }),
+    // TODO: It's working but should I do it or should I use dotenv-webpack package?
+    // See this issue for more details: https://github.com/mrsteele/dotenv-webpack/issues/271
+    new webpack.DefinePlugin({
+      URL:
+        process.env.NODE_ENV === 'development'
+          ? `'http://localhost:3000'`
+          : `'https://api.myapp.com'`,
+    }),
+    new ReactRefreshPlugin(),
+    new HtmlWebpackPlugin({
+      template: './public/index.html',
+    }),
+    new NodePolyfillPlugin(),
+  ],
 }
-
-export default config

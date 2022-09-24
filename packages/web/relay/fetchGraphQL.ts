@@ -1,7 +1,7 @@
 import { Variables } from 'relay-runtime'
 
 export const fetchGraphQL = async (text: string, variables?: any) => {
-  const response = await fetch('http://localhost:3333/', {
+  const response = await fetch('http://localhost:3333/graphql', {
     method: 'POST',
     headers: {
       'Access-Control-Allow-Origin': '*',

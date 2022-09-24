@@ -1,34 +1,24 @@
-import { ApolloServer } from 'apollo-server'
-import { schema } from '../graphql/schema'
+import { createServer } from 'http'
+
+import { config } from './environment'
 import { connectDatabase } from './databaseConnection'
-import UserQuery from '../../web/src/modules/pages/post/UserQuery'
+import app from './app'
 
-/* const Koa = require('koa')
-const mount = require('koa-mount')
-const { graphqlHTTP } = require('koa-graphql')
+const bootstrap = async () => {
+  try {
+    await connectDatabase()
+  } catch (err) {
+    // eslint-disable-next-line no-console
+    console.error('Unable to connect to database!', err)
+    process.exit(1)
+  }
 
-const app = new Koa()
+  const server = createServer(app.callback())
 
-app.use(
-  mount(
-    '/graphql',
-    graphqlHTTP({
-      schema: schema,
-      graphiql: true,
-    }),
-  ),
-)
+  server.listen(config.PORT, () => {
+    // eslint-disable-next-line no-console
+    console.log(`Running at ${config.PORT} port...`)
+  })
+}
 
-app.listen(3333) */
-
-const server = new ApolloServer({
-  schema,
-})
-
-connectDatabase()
-  .then()
-  .catch((error) => console.log(error))
-
-server.listen(3333, () => {
-  console.log('server is running in port 3333')
-})
+bootstrap()

@@ -9,11 +9,12 @@
       "forceConsistentCasingInFileNames": true,
       "moduleResolution": "node",
       "resolveJsonModule": true,
-      "isolatedModules": true,
+      "isolatedModules": false,
       "baseUrl": "./src",
       "noEmit": true,
       "jsx": "react"
     },
     "include": ["./src", "../server/graphql/posts/resolvers/threadResolver.tsx"],
-    "exclude": ["node_modules", "./src/**/*.test.tsx"]
+    "exclude": ["node_modules", "./src/**/*.test.tsx"],
+
   }

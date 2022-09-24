@@ -9,14 +9,14 @@
 
 .container-menu ul li a {
   color: white;
-  font-size: 19px;
+  font-size: 20px;
   text-decoration: none;
   display: block;
-  padding-left: 10px;
+  padding-left: 23px;
 }
 
 .container-menu ul li {
-  margin-top: 30px;
+  margin-top: 25px;
   flex-direction: row;
   display: flex;
 }
@@ -26,37 +26,35 @@
 }
 
 .container-button {
-  margin-left: 70px;
-  margin-top: 45px;
+  margin-top: 25px;
 }
 
 .button {
-  width: 170px;
-  height: 45px;
-  background-color: #00acee;
+  width: 220px;
+  height: 50px;
+  background-color: #1d9bf0;
   border-radius: 25px;
-  border: 1px solid #00acee;
+  border: 1px solid #1d9bf0;
   color: white;
   font-size: 17px;
   font-weight: bold;
 }
 
 .button:hover {
-  background-color: #0595ce;
+  background-color: #1ea5ff;
   cursor: pointer;
 }
 
 .icon {
   color: white;
-  width: 20px;
-  height: 20px;
+  width: 25px;
+  height: 25px;
 }
 
 .logo {
-  color: white;
-  width: 40px;
-  height: 40px;
-  margin-left: 40px;
+  color: rgb(231, 231, 231);
+  width: 36px;
+  height: 36px;
 }
 
 .button-login {
@@ -78,10 +76,12 @@
 .input-login {
   height: 60px;
   width: 400px;
-  border: none;
-  border-bottom: 3px solid #00acee;
+  border-bottom: 2px solid #00acee;
+  border-radius: 15px;
   color: black;
-  background-color: white;
+  background-color: rgb(228, 228, 228);
+  margin-top: 30px;
+  padding-left: 15px;
 }
 
 .input-login:focus {
@@ -116,4 +116,18 @@
 
 .container-modal-register {
   margin-top: 40px;
+}
+
+.loginLayout {
+  align-items: center;
+}
+
+.signout {
+  color: rgb(211, 211, 211);
+  padding-top: 15px;
+}
+
+.signout:hover {
+  cursor: pointer;
+  color: white;
 }

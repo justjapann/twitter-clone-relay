@@ -2,28 +2,40 @@
 Root query
 """
 type Query {
-  posts(
+  """
+  Fetches an object given its ID
+  """
+  node(
     """
-    Returns the items in the list that come after the specified cursor.
+    The ID of an object
     """
-    after: String
+    id: ID!
+  ): Node
 
+  """
+  Fetches objects given their IDs
+  """
+  nodes(
     """
-    Returns the first n items from the list.
+    The IDs of objects
     """
-    first: Int
-
-    """
-    Returns the items in the list that come before the specified cursor.
-    """
-    before: String
-
-    """
-    Returns the last n items from the list.
-    """
-    last: Int
-  ): PostConnection!
+    ids: [ID!]!
+  ): [Node]!
+  posts(after: String, first: Int, before: String, last: Int): PostConnection!
+  me: User
   allUsers: [User]
+  userRegisterMutation(input: UserRegisterInput!): UserRegisterPayload
+  userLoginMutation(input: UserLoginInput!): UserLoginPayload
+}
+
+"""
+An object with an ID
+"""
+interface Node {
+  """
+  The id of the object.
+  """
+  id: ID!
 }
 
 """
@@ -89,21 +101,48 @@ type Post {
   body: String
 }
 
-type User {
+type User implements Node {
+  """
+  The ID of an object
+  """
+  id: ID!
   username: String!
+  displayName: String
   email: String!
   password: String!
+}
+
+type UserRegisterPayload {
+  token: String
+  me: User
+  clientMutationId: String
+}
+
+input UserRegisterInput {
+  username: String!
+  displayName: String
+  email: String!
+  password: String!
+  clientMutationId: String
+}
+
+type UserLoginPayload {
+  token: String
+  me: User
+  clientMutationId: String
+}
+
+input UserLoginInput {
+  username: String!
+  password: String!
+  clientMutationId: String
 }
 
 type Mutation {
   CreatePost(input: CreatePostInput!): CreatePostPayload
   DeletePost(input: DeletePostInput!): DeletePostPayload
   UpdatePost(input: UpdatePostInput!): UpdatePostPayload
-
-  """
-  Creates a new user
-  """
-  userRegisterMutation(input: userRegisterInput!): userRegisterPayload
+  userRegisterMutation(input: UserRegisterInput!): UserRegisterPayload
   userLoginMutation(input: UserLoginInput!): UserLoginPayload
 }
 
@@ -138,30 +177,5 @@ type UpdatePostPayload {
 input UpdatePostInput {
   id: String!
   body: String!
-  clientMutationId: String
-}
-
-type userRegisterPayload {
-  token: String
-  user: User
-  clientMutationId: String
-}
-
-input userRegisterInput {
-  username: String!
-  email: String!
-  password: String!
-  clientMutationId: String
-}
-
-type UserLoginPayload {
-  token: String
-  user: User
-  clientMutationId: String
-}
-
-input UserLoginInput {
-  username: String!
-  password: String!
   clientMutationId: String
 }

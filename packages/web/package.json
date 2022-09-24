@@ -2,8 +2,8 @@
   "name": "my-app",
   "version": "0.0.1",
   "scripts": {
-    "start:dev": "webpack serve --config webpack.config.ts",
-    "build": "webpack --config webpack.prod.config.ts",
+    "start:dev": "webpack serve --hot",
+    "build": "webpack --config webpack.config.ts",
     "relay": "relay-compiler",
     "copy-env": "cp .env.example .env",
     "lint": "eslint src/**/*.{ts,tsx,json}",
@@ -15,14 +15,30 @@
     "@emotion/react": "^11.10.4",
     "@emotion/styled": "^11.10.4",
     "@mui/material": "^5.10.6",
+    "@pmmmwh/react-refresh-webpack-plugin": "^0.5.7",
     "bcryptjs": "^2.4.3",
     "css-loader": "^6.7.1",
     "formik": "^2.2.9",
     "framer-motion": "^6.5.1",
+    "jwt-decode": "^3.1.2",
+    "node-polyfill-webpack-plugin": "^2.0.1",
     "react-icons": "^4.4.0",
     "react-router-dom": "^6.3.0",
     "relay-compiler-language-typescript": "^15.0.1",
     "style-loader": "^3.3.1",
     "yup": "^0.32.11"
+  },
+  "devDependencies": {
+    "@pmmmwh/react-refresh-webpack-plugin": "^0.5.4",
+    "react-refresh": "^0.11.0",
+    "relay-compiler": "^12.0.0",
+    "relay-compiler-language-typescript": "^15.0.0",
+    "relay-config": "^12.0.0",
+    "relay-test-utils": "^13.0.1",
+    "webpack": "^5.67.0",
+    "webpack-cli": "^4.9.2",
+    "webpack-dev-server": "^4.5.0",
+    "webpack-merge": "^5.8.0",
+    "webpack-plugin-serve": "^1.5.0"
   }
 }
