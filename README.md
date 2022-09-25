@@ -1,15 +1,5 @@
 # Twitter clone with relay
 
-### Run in development mode
-
-- ```yarn install``` to install dependencies
-- ```yarn dev:server``` run server and go to localhost:3333/graphql
-- ```cd packages/web``` and ```yarn start:dev``` to start web server (localhost/3000)
-
-### Notes
-
-- Dont forget the change MONGO_URI in .env file
-
 ### Technologies
 
 - Typescript
@@ -18,6 +8,16 @@
 - Relay
 - MongoDB
 - KoaJS
+
+### Notes
+
+- Add a new MONGO_URI to your project
+
+### Run in development mode
+
+- ```yarn install``` to install dependencies
+- ```yarn dev:server``` run server and go to localhost:3333/graphql
+- ```cd packages/web``` and ```yarn start:dev``` to start web server (localhost/3000)
 
 ### Queries
 
