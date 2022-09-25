@@ -43,7 +43,7 @@ module.exports = {
     ],
   },
   devServer: {
-    port: 3000,
+    port: 3001,
     hot: true,
     compress: true,
     historyApiFallback: true,
@@ -59,8 +59,8 @@ module.exports = {
     new webpack.DefinePlugin({
       URL:
         process.env.NODE_ENV === 'development'
-          ? `'http://localhost:3000'`
-          : `'https://api.myapp.com'`,
+          ? `'http://localhost:3001'`
+          : `'twitter-clone-relay-bx56.vercel.app'`,
     }),
     new ReactRefreshPlugin(),
     new HtmlWebpackPlugin({
