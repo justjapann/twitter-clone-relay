@@ -56,7 +56,6 @@ npm manifest:
     "scripts": {
       "relay": "relay-compiler",
       "start": "webpack serve --config packages/web/webpack.config.ts",
-      "build": "webpack --config packages/web/webpack.prod.config.ts",
       "dev:server": "tsnd --transpile-only --ignore-watch node_modules packages/server/src/server.ts"
     },
     "devDependencies": {

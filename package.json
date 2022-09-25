@@ -13,6 +13,7 @@
     "apollo-server": "^3.10.0",
     "bcryptjs": "^2.4.3",
     "class-validator": "^0.13.2",
+    "concurrently": "^7.4.0",
     "css-loader": "^6.7.1",
     "dataloader": "^2.1.0",
     "dotenv": "^16.0.1",
@@ -44,11 +45,14 @@
   "scripts": {
     "relay": "relay-compiler",
     "start": "webpack serve --hot",
-    "build": "webpack --config packages/web/webpack.prod.config.ts",
-    "dev:server": "tsnd --transpile-only --ignore-watch node_modules packages/server/src/server.ts",
+    "start:dev": "webpack serve ./packages/web/webpack.config.ts",
     "lint": "eslint src/**/*.{ts,tsx,json}",
     "lint:fix": "eslint --fix 'src/**/*.{ts,tsx,json}'",
-    "format": "prettier --write 'src/**/*.{ts,tsx,css,md,json}' --config ./.prettierrc"
+    "format": "prettier --write 'src/**/*.{ts,tsx,css,md,json}' --config ./.prettierrc",
+    "dev": "yarn dev:all",
+    "dev:server": "tsnd --transpile-only --ignore-watch node_modules packages/server/src/server.ts",
+    "dev:client": "yarn workspace @twitter/web start",
+    "dev:all": "concurrently \"yarn dev:server\" \"yarn dev:client\""
   },
   "devDependencies": {
     "@babel/core": "^7.18.6",

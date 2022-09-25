@@ -1,8 +1,8 @@
 {
-  "name": "my-app",
+  "name": "@twitter/web",
   "version": "0.0.1",
   "scripts": {
-    "start:dev": "webpack serve --hot",
+    "start": "webpack serve --hot",
     "build": "webpack --config webpack.config.ts",
     "relay": "yarn run relay-compiler",
     "copy-env": "cp .env.example .env",

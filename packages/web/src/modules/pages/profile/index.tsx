@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import SideBar from '../sidebar/SideBard'
 import RightBar from '../rightbar/RightBar'
-import { UserPage } from './UserPage'
+import { User } from './User'
 import '../../../styles/Profile.css'
 
 const Profile = () => {
@@ -12,7 +12,7 @@ const Profile = () => {
       </div>
 
       <div className='container-post'>
-        <UserPage />
+        <User />
       </div>
 
       <div>
