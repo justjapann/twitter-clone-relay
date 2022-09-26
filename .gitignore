@@ -2,3 +2,8 @@ build
 node_modules
 .env
 jwt
+package-lock.json
+yarn-error.log
+yarn.lock
+*.log
+yarn-*.log
